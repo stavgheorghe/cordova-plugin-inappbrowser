@@ -1386,7 +1386,7 @@ public class InAppBrowser extends CordovaPlugin {
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             super.onReceivedSslError(view, handler, error);
-            String message;
+            String message = "";
             try {
                 JSONObject obj = new JSONObject();
                 obj.put("type", LOAD_ERROR_EVENT);
