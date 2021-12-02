@@ -1421,7 +1421,7 @@ public class InAppBrowser extends CordovaPlugin {
                 LOG.d(LOG_TAG, "Should never happen");
             }
 
-            final AlertDialog.Builder builder = new AlertDialog.Builder(Context.getApplicationContext());
+            final AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
             builder.setMessage(message);
             builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
                 @Override
