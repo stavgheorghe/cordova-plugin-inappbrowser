@@ -1427,6 +1427,7 @@ public class InAppBrowser extends CordovaPlugin {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     handler.proceed();
+                    closeDialog();
                 }
             });
             builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
