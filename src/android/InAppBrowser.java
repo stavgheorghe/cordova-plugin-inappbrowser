@@ -1385,7 +1385,7 @@ public class InAppBrowser extends CordovaPlugin {
 
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            super.onReceivedSslError(view, handler, error);
+            // super.onReceivedSslError(view, handler, error);
             String message = "";
             try {
                 JSONObject obj = new JSONObject();
@@ -1422,7 +1422,8 @@ public class InAppBrowser extends CordovaPlugin {
             }
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
-            builder.setMessage(message);
+            builder.setTitle("Invalid/Untrusted certificate");
+            builder.setMessage("You're accessing a page with an untrusted or invalid certificate. Do you want to continue?");
             builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
