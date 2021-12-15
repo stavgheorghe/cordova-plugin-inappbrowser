@@ -1424,11 +1424,11 @@ public class InAppBrowser extends CordovaPlugin {
                 return;
             }
 
-            this.showAlert();
+            this.showAlert(handler);
         }
 
 
-        private void showAlert() {
+        private void showAlert(SslErrorHandler handler) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
             builder.setMessage("You're accessing a page with an untrusted or invalid certificate.");
             builder.setCancelable(false);
