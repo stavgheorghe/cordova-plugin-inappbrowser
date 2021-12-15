@@ -1417,24 +1417,29 @@ public class InAppBrowser extends CordovaPlugin {
                 obj.put("message", message);
 
                 sendUpdate(obj, true, PluginResult.Status.ERROR);
-
-                final AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
-                builder.setMessage("You're accessing a page with an untrusted or invalid certificate.");
-                builder.setCancelable(false);
-                builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        handler.proceed();
-                    }
-                });
-                final AlertDialog dialog = builder.create();
-                dialog.show();
             } catch (JSONException ex) {
                 LOG.d(LOG_TAG, "Should never happen");
                 handler.cancel();
 
                 return;
             }
+
+            this.showAlert();
+        }
+
+
+        private void showAlert() {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
+            builder.setMessage("You're accessing a page with an untrusted or invalid certificate.");
+            builder.setCancelable(false);
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.proceed();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         /**
